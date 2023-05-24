@@ -4,13 +4,14 @@ import FahrenheitToCelsius from "./FahrenheitToCelsius";
 
 const WeatherDisplay = ({ ville }) => {
     const [data, setData] = useState([])
+    const apiKey = "4961f48689760d647f370de1feca07cc"
     
     useEffect(() => {
         getData()
     }, [ville]);
 
     const getData = () => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&appid=4961f48689760d647f370de1feca07cc`, {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&appid=${apiKey}`, {
         })
             .then((res) => {
                 setData(res.data)
