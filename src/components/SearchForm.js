@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 
-import axios from 'axios'
-
 
 const SearchForm = () => {
     const [city, setCity] = useState('')
-    const [weatherData, setWeatherData] = useState(null)
 
 
     return (
