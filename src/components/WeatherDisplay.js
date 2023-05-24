@@ -6,21 +6,21 @@ const WeatherDisplay = ({ ville }) => {
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
     const apiKey = "4961f48689760d647f370de1feca07cc"
-    
-    useEffect(() => {
-        getData()
-    }, [ville]);
 
-    const getData = () => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&appid=${apiKey}`, {
-        })
-            .then((res) => {
-                setData(res.data)
+    useEffect(() => {
+        const getData = () => {
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&appid=${apiKey}`, {
             })
-            .catch((err) => {
-                setError(err.response.status)
-            })
-    }
+                .then((res) => {
+                    setData(res.data)
+                })
+                .catch((err) => {
+                    setError(err.response.status)
+                })
+        };
+
+        getData();
+    }, [ville]);
 
     if(error === 404) return (<center>Ville non trouvée</center>)
     if(error && error !== 404) return (<center>Une erreur est survenue</center>)
