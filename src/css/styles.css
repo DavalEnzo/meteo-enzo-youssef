@@ -1,0 +1,25 @@
+body{
+    background-color: rgb(71, 107, 213);
+    color: #fff;
+}
+
+.container-meteo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.container-meteo span {
+    font-size: 2.5rem;
+}
+
+.container-meteo input[type="text"] {
+    height: 25px;
+    border: none;
+}
+.container-meteo button {
+    padding: 5px;
+    border: none;
+    color: #fff;
+    background: #333;
+}
