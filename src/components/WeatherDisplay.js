@@ -27,10 +27,13 @@ const WeatherDisplay = ({ ville }) => {
             <h1 style={{marginBottom: "3%"}}>Ville de {ville}</h1>
             <div>
                 <FahrenheitToCelsius fahrenheit={data.main.temp}/>
-                <p className="center-align"><img src="/weather.svg" alt="Temps" />Temps : {data.weather[0].description}</p>
+                <p className="center-align"><img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="Temps" />Temps : {data.weather[0].description}</p>
                 <p className="center-align"><img src="/water-drop.svg" alt="Humidite" />Humidité : {data.main.humidity}%</p>
                 <p className="center-align"><img src="/Pressure.svg" alt="Pression" />Pression : {data.main.pressure} hPa</p>
                 <p className="center-align"><img src="/wind.svg" alt="Vitesse" />Vitesse du vent : {data.wind.speed} m/s</p>
+            </div>
+            <div>
+                <p> Météo prise le {new Date().toLocaleDateString()} à {new Date().toLocaleTimeString()} </p>
             </div>
         </div>
     )
