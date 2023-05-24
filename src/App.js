@@ -1,13 +1,9 @@
-import React from 'react';
+import './App.css';
+import Routeur from "./router/Routeur";
 import SearchForm from './components/SearchForm';
 
-const App = () => {
-  return (
-    <div className='container-meteo'>
-      <h1>Recherche</h1>
-      <SearchForm />
-    </div>
-  );
-};
+function App() {
+  return <Routeur></Routeur>;
+}
 
 export default App;
