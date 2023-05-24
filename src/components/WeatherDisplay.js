@@ -23,7 +23,7 @@ const WeatherDisplay = ({ ville }) => {
     }
 
     if(error === 404) return (<center>Ville non trouvée</center>)
-    if(error !== 404) return (<center>Une erreur est survenue</center>)
+    if(error && error !== 404) return (<center>Une erreur est survenue</center>)
 
     if(!data.main) return (<center>Chargement...</center>)
 
