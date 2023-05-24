@@ -4,6 +4,7 @@ import FahrenheitToCelsius from "./FahrenheitToCelsius";
 
 const WeatherDisplay = ({ ville }) => {
     const [data, setData] = useState([])
+    const [error, setError] = useState(null)
     const apiKey = "4961f48689760d647f370de1feca07cc"
     
     useEffect(() => {
@@ -18,8 +19,11 @@ const WeatherDisplay = ({ ville }) => {
             })
             .catch((err) => {
                 console.log(err)
+                setError(err.response.status)
             })
     }
+
+    if(error === 404) return (<center>Ville non trouvée</center>)
 
     if(!data.main) return (<center>Chargement...</center>)
 
