@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchForm from '../components/SearchForm';
-import CSS from '../css/styles.css';
 
 function Home() {
   return (
