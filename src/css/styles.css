@@ -26,10 +26,11 @@ body{
 
 .rounded-border {
     border-radius: 5px;
-    background: #f6e1e1;
+    background: #ffffff;
     color: black;
-    margin: 8% auto;
-    max-width: 20%;
+    margin: 0 auto;
+    max-width: 400px;
+    box-shadow: 2px 2px 8px 1px rgba(255,255,255,0.65);
 }
 
 .center-align {
