@@ -16,4 +16,4 @@ const Routeur = () => {
     )
 }
 
-export default Routeur
+export default Routeur;

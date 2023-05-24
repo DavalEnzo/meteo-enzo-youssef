@@ -43,3 +43,36 @@ img {
     height: 40px;
     padding: 5px;
 }
+
+.container-box {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.searchVille {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #1976D2;
+  }
