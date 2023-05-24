@@ -18,12 +18,12 @@ const WeatherDisplay = ({ ville }) => {
                 setData(res.data)
             })
             .catch((err) => {
-                console.log(err)
                 setError(err.response.status)
             })
     }
 
     if(error === 404) return (<center>Ville non trouvée</center>)
+    if(error !== 404) return (<center>Une erreur est survenue</center>)
 
     if(!data.main) return (<center>Chargement...</center>)
 
