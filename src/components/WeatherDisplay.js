@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FahrenheitToCelsius from "./FahrenheitToCelsius";
+import backGrounds from "../data/animations.json"
 
 const WeatherDisplay = ({ ville }) => {
     const [data, setData] = useState([])
@@ -27,8 +28,11 @@ const WeatherDisplay = ({ ville }) => {
 
     if(!data.main) return (<center>Chargement...</center>)
 
+    const conditionMeteorologiqueApi = data.weather[0].main
+    const conditionMeteorologique = backGrounds.find((element) => element.name === conditionMeteorologiqueApi)
+
     return (
-        <div className="container-meteo rounded-border">
+        <div style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${conditionMeteorologique.image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backdropFilter: "blur(25px)"}} className="container-meteo rounded-border">
             <h1 style={{marginBottom: "3%"}}>Ville de {ville}</h1>
             <div>
                 <FahrenheitToCelsius fahrenheit={data.main.temp}/>
