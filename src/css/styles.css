@@ -23,6 +23,27 @@ body{
     color: #fff;
     background: #333;
 }
+
+.rounded-border {
+    border-radius: 5px;
+    background: #f6e1e1;
+    color: black;
+    margin: 8% auto;
+    max-width: 20%;
+}
+
+.center-align {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
 .container-box {
     margin: 0 auto;
     display: flex;
@@ -55,4 +76,3 @@ body{
   button:hover {
     background-color: #1976D2;
   }
-  

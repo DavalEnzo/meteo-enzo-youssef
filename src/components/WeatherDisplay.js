@@ -1,49 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import FahrenheitToCelsius from "./FahrenheitToCelsius";
 
-const WeatherDisplay = () => {
-  const { city } = useParams();
-  const [weatherData, setWeatherData] = useState(null);
+const WeatherDisplay = ({ ville }) => {
+    const [data, setData] = useState([])
+    
+    useEffect(() => {
+        getData()
+    }, [ville]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=ecaedecc253a5fc299cbe2b06e20bba5`
-        );
-        setWeatherData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    const getData = () => {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&appid=4961f48689760d647f370de1feca07cc`, {
+        })
+            .then((res) => {
+                setData(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
-    fetchData();
-  }, [city]);
+    if(!data.main) return (<center>Chargement...</center>)
 
-  return (
-    <div>
-      <h1>Météo pour {city}</h1>
-      {weatherData && (
-        <div>
-          <p>Coordonnées : {weatherData.coord.lon}, {weatherData.coord.lat}</p>
-          <p>Météo : {weatherData.weather[0].main}</p>
-          <p>Description : {weatherData.weather[0].description}</p>
-          <p>Température : {Math.round(weatherData.main.temp - 273.15)}°C</p>
-          <p>Température minimale : {Math.round(weatherData.main.temp_min - 273.15)}°C</p>
-          <p>Température maximale : {Math.round(weatherData.main.temp_max - 273.15)}°C</p>
-          <p>Pression : {weatherData.main.pressure} hPa</p>
-          <p>Humidité : {weatherData.main.humidity}%</p>
-          <p>Visibilité : {weatherData.visibility} m</p>
-          <p>Vitesse du vent : {weatherData.wind.speed} m/s</p>
-          <p>Direction du vent : {weatherData.wind.deg}°</p>
-          <p>Nuages : {weatherData.clouds.all}%</p>
-          <p>Date et heure de la mesure : {new Date(weatherData.dt * 1000).toLocaleString()}</p>
-          <p>Pays : {weatherData.sys.country}</p>
+    return (
+        <div className="container-meteo rounded-border">
+            <h1 style={{marginBottom: "3%"}}>Ville de {ville}</h1>
+            <div>
+                <FahrenheitToCelsius fahrenheit={data.main.temp}/>
+                <p className="center-align"><img src="/weather.svg" alt="Temps" />Temps : {data.weather[0].description}</p>
+                <p className="center-align"><img src="/water-drop.svg" alt="Humidite" />Humidité : {data.main.humidity}%</p>
+                <p className="center-align"><img src="/Pressure.svg" alt="Pression" />Pression : {data.main.pressure} hPa</p>
+                <p className="center-align"><img src="/wind.svg" alt="Vitesse" />Vitesse du vent : {data.wind.speed} m/s</p>
+            </div>
         </div>
-      )}
-    </div>
-  );
-};
+    )
 
-export default WeatherDisplay;
+}
+export default WeatherDisplay
